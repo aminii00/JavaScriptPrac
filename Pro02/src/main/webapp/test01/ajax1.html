@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" 
+integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" 
+crossorigin="anonymous"></script>
+<script type ="text/javascript">
+function fn_process(){
+	$.ajax({
+		type : "get",
+		dataType :"text",
+		async:false,
+		url : "http://localhost:8080/Pro02/AjaxTest1",  //sevlet경로
+		data:{param:"Hellojequery"}, // key:value!
+		success:function (data,textStatus){
+			$('#message').append(data);
+		},
+		error:function(data,textStatus){
+			alert("에러가 발생했습니다."); 
+		},
+		complete:function(data,textStatus){
+			alert("작업을 완료했습니다");
+		}
+	});
+}
+</script>
+</head>
+<body>
+<input type ="button" value="전송하기" onClick="fn_process()"/><br><br>
+<div id ="message"></div>
+</body>
+</html>
